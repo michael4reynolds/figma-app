@@ -1,16 +1,15 @@
-import React from 'react';
 import {
-  BrowserRouter as Router,
-  Switch,
+  Redirect,
   Route,
-  Redirect
+  BrowserRouter as Router,
+  Switch
 } from 'react-router-dom';
+import { createListOfUpdatedProductsInCart, loadState, saveState } from './utils';
 
-import { DemoView } from './views/final/DemoView';
-import { ProductsView } from './views/final/ProductsView';
-import { CheckoutView } from './views/final/CheckoutView';
-
-import { loadState, saveState, createListOfUpdatedProductsInCart } from './utils';
+import { CheckoutView } from './views/CheckoutView';
+import { DemoView } from './views/DemoView';
+import { ProductsView } from './views/ProductsView';
+import React from 'react';
 
 export class App extends React.Component {
   constructor(props) {
@@ -34,7 +33,7 @@ export class App extends React.Component {
   updateCart(event, add) {
     const [id, price] = event.target.id.split("#");
 
-    const updatedProductsInCart = createListOfUpdatedProductsInCart(this.state.products, {id, price}, add);
+    const updatedProductsInCart = createListOfUpdatedProductsInCart(this.state.products, { id, price }, add);
     const updatedCount = Object.values(updatedProductsInCart).map((item) => item.count).reduce((a, b) => a + b, 0);
 
     this.setState({
