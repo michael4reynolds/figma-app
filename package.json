@@ -17,6 +17,7 @@
     "build": "npx webpack --mode production"
   },
   "dependencies": {
+    "@michael4reynolds/component-library": "file:../figma-component-library",
     "@mikaelvesavuori/acmecorp-potted-plants-components": "latest",
     "prop-types": "latest",
     "react": "17",
